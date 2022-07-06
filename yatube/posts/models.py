@@ -6,7 +6,7 @@ User = get_user_model()
 class Group(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    description = models.TextField(max_length=400)
+    description = models.TextField(null=True)
 
     def __str__(self):
         return self.title
@@ -24,7 +24,7 @@ class Post(models.Model):
         null=True,
         blank=True,
         on_delete=models.CASCADE,
-        related_name='group'
+        related_name='posts'
     )
     
 # Create your models here.
