@@ -9,7 +9,7 @@ def index(request):
     context = {
         "title": title,
         "posts": posts
-}
+    }
     return render(request, template, context)
 
 
@@ -22,5 +22,5 @@ def group_posts(request, slug):
         "title": title,
         "group": group,
         "posts": posts
-}
+    }
     return render(request, group_list, context)
