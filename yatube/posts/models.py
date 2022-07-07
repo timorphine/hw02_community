@@ -11,6 +11,7 @@ class Group(models.Model):
     def __str__(self):
         return self.title
 
+
 class Post(models.Model):
     text = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -27,4 +28,3 @@ class Post(models.Model):
         related_name='posts'
     )
     
-# Create your models here.
