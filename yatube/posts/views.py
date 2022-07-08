@@ -5,7 +5,7 @@ from .models import Group, Post
 def index(request):
     template = "posts/index.html"
     title = "Это главная страница проекта Yatube"
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.select_related('group')[:10]
     context = {
         "title": title,
         "posts": posts
@@ -17,7 +17,7 @@ def group_posts(request, slug):
     group_list = "posts/group_list.html"
     title = "Записи сообщества"
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by("-pub_date")[:10]
+    posts = Post.objects.filter(group=group)[:10]
     context = {
         "title": title,
         "group": group,
